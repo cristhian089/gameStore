@@ -5,7 +5,6 @@ const userSchema = new mongoose.Schema({
     name: String,
     email: String,
     password: String,
-
 });
 
 userSchema.methods.generateJWT = function(){

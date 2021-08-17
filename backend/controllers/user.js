@@ -5,7 +5,7 @@ const registerUser = async (req, res) => {
   if (!req.body.name || !req.body.email || !req.body.password)
     return res.status(400).send("Process failed: Incomplete data");
 
-  let existingUser = await User.findOne({ name: req.body.name });
+  let existingUser = await User.findOne({ email: req.body.email });
   if (existingUser)
     return res
       .status(400)
@@ -32,7 +32,7 @@ const registerUser = async (req, res) => {
 };
 
 const listUser = async (req, res) =>{
-  let user = await User.find({ name: new RegExp(req.params["name"],"i")}).populate("roleId").exce();
+  let user = await User.find({ name: new RegExp(req.params["name"],"i")});
 
   if(!user || user.length === 0) return res.status(400).send("No users");
   return res.status(200).send({ user });

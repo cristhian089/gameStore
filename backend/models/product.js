@@ -1,13 +1,12 @@
 const mongoose = require("mongoose");
-const moment = require("moment");
 
 const productSchema = new mongoose.Schema({
     name: String,
     price: Number,
     code: Number,
     description: String,
-    date:{type:Date, defatult:Date.now},
-    idStock: {type: mongoose.Schema.ObjectId, ref:"stock"},
+    idStock: {type: mongoose.Schema.ObjectId,ref:"stock"},
+    date:{type:Date, default:Date.now},
 });
 
 const product = mongoose.model("product",productSchema);
